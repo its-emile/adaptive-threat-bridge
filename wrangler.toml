@@ -1,0 +1,14 @@
+name = "ai-proxy-security"
+main = "cloudflareproxy.js"
+compatibility_date = "2024-01-01"
+
+# KV namespace binding for bloom filters
+# Provides fast edge-cached reads (<50ms) with global synchronization
+[[kv_namespaces]]
+binding = "BLOOM_FILTERS"
+id = "violation-fingerprint-bloom-filters"  # Replace with actual namespace ID after creation
+
+# For development/preview
+# [[kv_namespaces]]
+# binding = "BLOOM_FILTERS"
+# preview_id = "YOUR_PREVIEW_KV_NAMESPACE_ID"
