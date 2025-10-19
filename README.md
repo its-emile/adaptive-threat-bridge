@@ -47,7 +47,7 @@ The system operates as a Cloudflare Worker proxy that:
 * Updates bloom filters with newly detected violations for future requests
 
 ## Demo
-This system is available in beta at <provider>.llm-proxy.com, with forwarding/blocking meeting the basic objectives.
+This system is available in beta at [[provider]].llm-proxy.com, with forwarding/blocking meeting the basic objectives.
 
 ## Roadmap
 The next milestone focuses on validating ROC-AUC improvements and false positive rates compared to single-provider detection, with a pivot decision planned for Day 21 based on whether federated reputation meaningfully enhances threat detection across fragmented attack chains.
