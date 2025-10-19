@@ -42,12 +42,26 @@ The system operates as a Cloudflare Worker proxy that:
 * Intercepts POST requests to AI provider APIs
 * Generates multiple fingerprints for each request
 * Analyzes request content using pattern matching and semantic embedding
-* Queries distributed bloom filters (stored in Cloudflare KV) for reputation lookups
+* Queries the client's reputation using its fingerprints and the system's tracking (bloom filters managed in Cloudflare KV)
 * Enforces policy decisions (block/allow) based on aggregated risk signals
 * Updates bloom filters with newly detected violations for future requests
 
 ## Demo
 This system is available in beta at [[provider]].llm-proxy.com, with forwarding/blocking meeting the basic objectives.
+Example:
+
+```
+POST https://anthropic.llm-proxy.com/v1/messages
+...post body follows
+```
+
+The request is forwarded to api.anthropic.com - or blocked if the body and prior requests overall contained literal or semantic content matching more than 1 risk policy (bioengineering, cyberattacks, manipulation or automation).
+
+Example:
+```
+HTTP 403
+{"status":"blocked","violations":["cyber","automation"]}
+```
 
 ## Roadmap
 The next milestone focuses on validating ROC-AUC improvements and false positive rates compared to single-provider detection, with a pivot decision planned for Day 21 based on whether federated reputation meaningfully enhances threat detection across fragmented attack chains.
