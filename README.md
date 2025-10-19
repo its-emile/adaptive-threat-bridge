@@ -16,8 +16,6 @@ This system helps prevent malicious actors from using AI platforms to orchestrat
   - Keyword pattern matching for explicit indicators
   - Semantic similarity analysis using embeddings to catch obfuscated attempts
 
-
-
 ### Actor Fingerprinting
 
 - **Multi-vector fingerprinting** that persists beyond disposable identifiers:
@@ -47,6 +45,9 @@ The system operates as a Cloudflare Worker proxy that:
 * Queries distributed bloom filters (stored in Cloudflare KV) for reputation lookups
 * Enforces policy decisions (block/allow) based on aggregated risk signals
 * Updates bloom filters with newly detected violations for future requests
+
+## Demo
+This system is available in beta at <provider>.llm-proxy.com, with forwarding/blocking meeting the basic objectives.
 
 ## Roadmap
 The next milestone focuses on validating ROC-AUC improvements and false positive rates compared to single-provider detection, with a pivot decision planned for Day 21 based on whether federated reputation meaningfully enhances threat detection across fragmented attack chains.
